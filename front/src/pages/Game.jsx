@@ -77,6 +77,7 @@ const Game = () => {
     } else {
       setFeedback('Incorrect. Try again!');
     }
+    
     // Load a new scenario after a short delay
     setTimeout(() => {
       setScenario(getRandomScenario());
@@ -97,14 +98,12 @@ const Game = () => {
       </div>
 
       <div className="relative z-10 container mx-auto p-12">
-        
         <div className="text-center mb-12">
         <img
           src={scenario.image}
           alt="Scenario"
           className="object-cover max-w-md mx-auto mb-6 rounded-xl shadow-lg size-48"
        />
-
           <p className="text-2xl font-semibold text-white mb-6 leading-relaxed">
             {scenario.question}
           </p>
@@ -123,7 +122,6 @@ const Game = () => {
               </div>
             ))}
           </div>
-          
         </div>
         
 
@@ -135,9 +133,7 @@ const Game = () => {
             Back to Home
           </Link>
         </div>
-        
       </div>
-
     </div>
   );
 }
