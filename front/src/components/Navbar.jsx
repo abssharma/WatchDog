@@ -9,7 +9,6 @@ const Navbar = () => {
                 <p>🐶</p>
             </NavLink>
             <nav className = "flex text-lg gap-7 font-medium">
-            
             </nav>
         </header>
     )
