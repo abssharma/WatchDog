@@ -53,16 +53,8 @@ def classify_image(img_path):
     prediction = model.predict(images)
     class_index = np.argmax(prediction, axis=1)
     
-    
     val = model.predict(images)
-    return 'Yes! This picture contain animal abuse' if val < 0.5 else 'No! This is a happy picture'
-
-def label(lab):
-    if lab:
-        print("Yes! This picture contains cruelty towards dogs") 
-    else:
-        print("No! This is a normal picture")            
-         
+    return 'Yes! This picture contain animal abuse' if val < 0.5 else 'No! This is a happy picture'         
 
 class Report(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -98,9 +90,7 @@ def submit_report():
     db.session.commit()
 
     return jsonify({'message': 'Report submitted successfully'})
-
-
-
+  
 @app.route('/test-img', methods=['GET'])
 def get_test_images():
     files = os.listdir(app.config['TEST_FOLDER'])
@@ -109,26 +99,19 @@ def get_test_images():
     for file in files:
         img_path = os.path.join(app.config['TEST_FOLDER'], file)
         print(f"Processing file: {img_path}")
-
         try:
             resize_image(img_path) 
             label = classify_image(img_path)
             print(f"Classified as: {label}")  
-
-            
-
             results.append({'filename': file, 'label': label})
         except Exception as e:
             print(f"Error processing {file}: {e}")
-
 
     return jsonify(results)
 
 @app.route('/test-img/<filename>')
 def get_test_image(filename):
     return send_from_directory(app.config['TEST_FOLDER'], filename)
-
-
 
 if __name__ == '__main__':
     if not os.path.exists('uploads'):
