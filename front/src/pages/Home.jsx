@@ -22,7 +22,6 @@ const Home = () => {
         <section className="px-10 py-100 grid lg:grid-cols-3 gap-6 p-18 mt-16">
 
           
-        
         <div className="bg-white p-8 rounded-xl shadow-xl transition-transform transform hover:scale-105 hover:shadow-2xl flex flex-col justify-between">
           <div>
             <h2 className="text-2xl font-semibold text-black mb-4">Report Animal Abuse</h2>
